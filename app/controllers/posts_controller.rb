@@ -1,14 +1,13 @@
 class PostsController < ApplicationController
   def index #indexアクションを定義した
-    @posts = Post.all
+    @posts = Post.all.order(id: "DESC")
   end
 
-  def new
-  end
 
   def create 
     # ↑のcreateはルーティングの指示をうける変数だけでなく、ビューを呼び出す変数も兼ねている
     Post.create(content: params[:content])
+    redirect_to action: :index
   end
   # 2,コントローラーには、ルーティングで設定された流れ(このリクエストがきたらこのアクションを起動せよ)
   # というマニュアルが置いてあるので、それを見て実際に処理を行う
