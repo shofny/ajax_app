@@ -1,0 +1,9 @@
+<h1>新規投稿ページ</h1>
+<%= form_with url: "/posts", method: :post, local: true do |from|%>
+<%# url: "/posts" HTTP通信のリクエスト:ルーティングのURIパターンと一致しなくてはいけない　%>
+<%# method HTTPメソッドのこと　post=送信してくださいとお願いしている　%>
+<%= from.text_field :content%>
+<%= from.submit "投稿する"%>
+<% end %>
+
+<%# 1,投稿ボタンを押すと、/posts,postの宛名のparamsの箱に情報をいれてコントローラーに送る %>
