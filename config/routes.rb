@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'posts#index'
   post 'posts', to: 'posts#create'
-  # クライアントサイドから入ってきたときのみルーティングを経由する
+  get 'posts/:id', to: 'posts#checked'
+  # pathパラメーター
 end
