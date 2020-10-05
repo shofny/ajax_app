@@ -5,16 +5,28 @@ class PostsController < ApplicationController
 
 
   def create 
-    # ↑のcreateはルーティングの指示をうける変数だけでなく、ビューを呼び出す変数も兼ねている
     Post.create(content: params[:content])
     redirect_to action: :index
   end
-  # 2,コントローラーには、ルーティングで設定された流れ(このリクエストがきたらこのアクションを起動せよ)
-  # というマニュアルが置いてあるので、それを見て実際に処理を行う
-  # ビューから届いた包みを受け取ったコントローラーはparamsの中身を覗く
-  # すると、:contentというタグがついた「form.text_field」が見つかるので、
-  # その内容をサーバーのcontentに書いてねとモデルにお願いする
+  
+  def checked
+    post = Post.find(params[:id])
+    #URLパラメータからきたidをparamsで拾って、それを元に特定のレコードをfind
+    #その情報をpostに代入
 
-  # 3,処理がおわると、今行ったアクションと同じ名前のビューを呼び出す
+    if post.checked #既読かどうかを判定するプロパティを設定
+      post.update(checked: false)
+      # tureの時は、既読を解除するためfalseに変更
+    else
+      post.update(checked: :ture)
+      #falseの場合は、既読に設定するためtureに変更
+    end
+
+    item = Post.find(params[:id])
+    #上記のifで設定した値をここで改めて取得し、itemに代入
+    render json: { post: item }
+    #任意で設定するrenderを用いて、jsonを指定
+    #postに先ほど取得したitemをいれて、checked.jsに返却
+  end
 
 end
