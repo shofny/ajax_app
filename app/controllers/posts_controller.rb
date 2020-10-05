@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   end
   
   def checked
-    post = Post.find(params{:id]})
+    post = Post.find(params[:id])
     #URLパラメータからきたidをparamsで拾って、それを元に特定のレコードをfind
     #その情報をpostに代入
 
@@ -26,8 +26,7 @@ class PostsController < ApplicationController
     #上記のifで設定した値をここで改めて取得し、itemに代入
     render json: { post: item }
     #任意で設定するrenderを用いて、jsonを指定
-    #post:に先ほど取得したitemをいれて、checked.jsに返却
-
+    #postに先ほど取得したitemをいれて、checked.jsに返却
   end
 
 end
