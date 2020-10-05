@@ -23,7 +23,7 @@ function check(){
       const XHR = new XMLHttpRequest()
       //エンドポイントを呼び出すため、XMLHttpRequestオブジェクトを生成、XHRに代入
       XHR.open("GET", `/posts/${postId}`, true)
-      // openメソッド定義(HTTPメソッドの指定, パスの指定[postIdは21行目], 非同期通信する？しない？)
+      // openメソッド定義(HTTPメソッドの指定, パスの指定[postIdは21行目], 非同期通信する？しない？)→routesへ
       XHR.responseType = "json"
       // responseTypeでどの形式でレスポンスをして欲しいかを指定した
       XHR.send()

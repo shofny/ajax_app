@@ -4,6 +4,9 @@
   <%= form.submit '投稿する', id: "submit" %>
 <% end %>
 
+<div id="list"></div>
+<%# memo.jsから飛んでくる新規投稿を追加するもの %>
+
 <% @posts.each do |post| %>
   <div class="post" data-id=<%= post.id %> data-check=<%= post.checked %>>
   <%# data-idというカスタムデータでメモのid,data-cheackで既読の有無を管理するpost.checkを持たせた %>
