@@ -5,8 +5,11 @@ class PostsController < ApplicationController
 
 
   def create 
-    Post.create(content: params[:content])
-    redirect_to action: :index
+    post = Post.create(content: params[:content], checked: false)
+    # index.html.erbの2-4行目で飛んできたものを参照 checkedは既読機能関連　読んでないのでfalseで送っている
+    render json:{post: post}
+    #帰ってきたデータをjsonに指定
+    #postという変数にいれ、memo.jsに返却
   end
   
   def checked
